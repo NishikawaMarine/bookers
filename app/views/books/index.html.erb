@@ -1,4 +1,10 @@
 <body>
+
+	<% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
 	
 <h1>Books</h1>
 	<table>
@@ -8,7 +14,7 @@
 		<% @books.each do |book| %>
 
 		<tbody>
-			<tr><td><%= book.title %></td><td><%= book.body %></td><td><%= link_to  'Show' , book_path(book) %> </td><td><%= link_to 'Edit' , edit_book_path(book) %></td><td><%= link_to 'Destroy' , book_path(book), method: :delete %></td></tr>
+			<tr><td><%= book.title %></td><td><%= book.body %></td><td><%= link_to  'Show' , book_path(book) %> </td><td><%= link_to 'Edit' , edit_book_path(book) %></td><td><%= link_to 'Destroy' , book_path(book), method: :delete,"data-confirm" => "Are you sure?" %></td></tr>
 		</tbody>
 		<% end %>
 	</table>
